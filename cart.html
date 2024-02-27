@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var a = localStorage.getItem('quantity');
+        var b = localStorage.getItem('cost');
+        var c = document.createElement('h2');
+        c.innerText = 'Order Summary';
+        c.style.color = 'crimson';
+        document.body.appendChild(c);
+        var d = document.createElement('h3');
+        d.innerText = 'Total Order Amount: $ '+ (a*b);
+        document.body.appendChild(d);
+        var e = document.createElement('button');
+        e.innerText = 'Confirm & Buy';
+        e.style.backgroundColor = 'orange';
+        e.style.color = 'cornsilk';
+        e.style.fontSize = '18px';
+        document.body.appendChild(e);
+        e.addEventListener('click',cb);
+        function cb() {
+            alert('Order Placed Successfully');
+            window.close();
+        }
+        var spacing = document.writeln('&nbsp');
+        var f = document.createElement('button');
+        f.innerText = 'Cancel';
+        f.style.backgroundColor = 'orange';
+        f.style.color = 'cornsilk';
+        f.style.fontSize = '18px';
+        document.body.appendChild(f);
+        f.addEventListener('click',cb2);
+        function cb2() {
+            alert('Order not placed.');
+            window.close();
+        }
+    </script>
+</body>
+</html>

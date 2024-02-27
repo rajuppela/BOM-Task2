@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See More</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+var a = localStorage.getItem('moreinfo');
+var b = JSON.parse(a);
+var maindiv = document.createElement('div');
+document.body.appendChild(maindiv);
+var title = document.createElement('h1');
+title.innerText = b.title;
+title.style.color='crimson';
+maindiv.appendChild(title);
+var pic = document.createElement('img');
+pic.src =  b.image;
+pic.setAttribute('style','width:40%;height:400px;');
+maindiv.appendChild(pic);
+var price = document.createElement('h2');
+price.innerText = '$ '+b.price;
+maindiv.appendChild(price);
+var quantitytext = document.createElement('h3');
+quantitytext.style.display = 'inline';
+var quantity = document.createElement('h3');
+quantity.innerHTML = '<input type="button" id="quantity" name="quantity" value="+">&nbsp';
+quantity.addEventListener('click',fun);
+function fun(){
+     num = prompt('please enter the quantity');
+     quantitytext.innerHTML = 'Quantity: '+num+'&nbsp';
+}
+quantity.style.display = 'inline';
+quantitytext.innerHTML = 'Quantity: ';
+maindiv.appendChild(quantitytext);
+maindiv.appendChild(quantity);
+var cart = document.createElement('button');
+cart.innerText = 'Go To Cart';
+cart.style.backgroundColor = 'orange';
+cart.style.color = 'cornsilk';
+cart.style.fontSize = '16px';
+cart.style.fontWeight = 'bold';
+maindiv.appendChild(cart);
+cart.addEventListener('click',cb);
+function cb() {
+    localStorage.setItem('quantity',num);
+    localStorage.setItem('cost',b.price);
+    window.open('./cart.html');
+}
+var reviews = document.createElement('h3');
+reviews.innerHTML = '<br>Product Reviews By Customers';
+maindiv.appendChild(reviews);
+var review1 = document.createElement('div');
+review1.innerHTML = '<br><h4>Raj</h4> <p>Product is good.</p>';
+maindiv.appendChild(review1);
+var review2 = document.createElement('div');
+review2.innerHTML = '<br><h4>Anonymous</h4> <p>Average. budget friendly.</p>';
+maindiv.appendChild(review2);
+var review3 = document.createElement('div');
+review3.innerHTML = '<br><h4>Srujin</h4> <p>Did not like the product.</p>';
+maindiv.appendChild(review3);
+var review4 = document.createElement('div');
+review4.innerHTML = '<br><h4>Akitha</h4> <p>Very Bad Quality.</p>';
+maindiv.appendChild(review4);
+    </script>
+</body>
+</html>
